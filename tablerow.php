@@ -8,7 +8,7 @@
 		echo "$first_day";
 		$name_of_day = date('w', $first_day) ; //get the day of the weeek
 		//caluting blank days for the month for diaplay 
-		echo "$name_of_day";
+		echo "<br/>$name_of_day";
 		switch($name_of_day){   
 			case "0": $blank = 0; 
 			break;   
