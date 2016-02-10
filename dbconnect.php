@@ -5,7 +5,7 @@
 
 
 $server = "us-cdbr-iron-east-03.cleardb.net";
-$username = "b677b9a020f66f ";
+$username = "b677b9a020f66f";
 $password = "bcb9f155";
 $db ="heroku_c959fc9f09570a9";
 
