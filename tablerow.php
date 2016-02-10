@@ -2,6 +2,10 @@
 
 
 <?php
+		ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 	 	echo "<tr>";
 
 		$first_day = mktime(0,0,0,$month, 1, $year) ;
