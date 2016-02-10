@@ -4,7 +4,7 @@
 <?php
 
 	 	echo "<tr>";
-	
+	echo "printing the row";
 		$first_day = mktime(0,0,0,$month, 1, $year) ;
 		$name_of_day = date('w', $first_day) ; //get the day of the weeek
 		//caluting blank days for the month for diaplay 
@@ -35,7 +35,7 @@
 		$day_num = 1;
 		while ( $day_num <= $total_days )   
 		{  
-			echo "printing the row";
+			
 			$todaysDate = date("n/j/Y");
 			$dateToCompare = $month. '/' . $day_num. '/' . $year;
 			echo "<td align='center' ";
