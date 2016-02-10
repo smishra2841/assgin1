@@ -42,6 +42,7 @@
 			//every day of the current month is turnin green
 			if ($todaysDate == $dateToCompare)
 			{
+				echo "printing dates";
 				echo "class ='a today'";
 
 			}  
@@ -78,7 +79,8 @@
 			//Make sure we start a new row every week  
 			if ($day_count > 7)  
 			{  
-				echo "</tr><tr>";  
+				echo "</tr><tr>";
+				echo "completed printing dates";  
 				$day_count = 1;  
 			}  
 			
