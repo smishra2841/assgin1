@@ -1,4 +1,4 @@
-
+<?php include 'calander2.php' ?>
 <?php
 session_start();
 require  '/src/Facebook/autoload.php';
@@ -71,4 +71,3 @@ if (isset($accessToken)) {
 
 ?>
 
-<?php include 'calander2.php' ?>
