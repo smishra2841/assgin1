@@ -1,72 +1,103 @@
-<?php include 'calander2.php' ?>
+
 <?php
-session_start();
-require_once('./src/Facebook/autoload.php');
+/**
+ * Copyright 2011 Facebook, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+require 'assgin1/src/facebook.php';
 
 $fb = new Facebook\Facebook([
   'app_id' => '763789147084760',
   'app_secret' => '7199d3ede5818b5e50c16eef50f027bf',
   'default_graph_version' => 'v2.5',
   ]);
-$helper = $fb->getRedirectLoginHelper();
-$permissions = ['email']; // optional
-	
-try {
-	if (isset($_SESSION['facebook_access_token'])) {
-		$accessToken = $_SESSION['facebook_access_token'];
-	} else {
-  		$accessToken = $helper->getAccessToken();
-	}
-} catch(Facebook\Exceptions\FacebookResponseException $e) {
- 	// When Graph returns an error
- 	echo 'Graph returned an error: ' . $e->getMessage();
-  	exit;
-} catch(Facebook\Exceptions\FacebookSDKException $e) {
- 	// When validation fails or other local issues
-	echo 'Facebook SDK returned an error: ' . $e->getMessage();
-  	exit;
- }
-if (isset($accessToken)) {
-	if (isset($_SESSION['facebook_access_token'])) {
-		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-	} else {
-		// getting short-lived access token
-		$_SESSION['facebook_access_token'] = (string) $accessToken;
-	  	// OAuth 2.0 client handler
-		$oAuth2Client = $fb->getOAuth2Client();
-		// Exchanges a short-lived access token for a long-lived one
-		$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
-		$_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
-		// setting default access token to be used in script
-		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-	}
-	// redirect the user back to the same page if it has "code" GET variable
-	if (isset($_GET['code'])) {
-		header('Location: ./');
-	}
-	// getting basic info about user
-	try {
-		$profile_request = $fb->get('/me?fields=name,first_name,last_name,email');
-		$profile = $profile_request->getGraphNode()->asArray();
-	} catch(Facebook\Exceptions\FacebookResponseException $e) {
-		// When Graph returns an error
-		echo 'Graph returned an error: ' . $e->getMessage();
-		session_destroy();
-		// redirecting user back to app login page
-		header("Location: ./");
-		exit;
-	} catch(Facebook\Exceptions\FacebookSDKException $e) {
-		// When validation fails or other local issues
-		echo 'Facebook SDK returned an error: ' . $e->getMessage();
-		exit;
-	}
-	
-	// printing $profile array on the screen which holds the basic info about user
-	print_r($profile);
-  	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
-} else {
-	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
-	$loginUrl = $helper->getLoginUrl('https://sohaibilyas.com/fbapp/', $permissions);
-	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
+
+// Get User ID
+$user = $facebook->getUser();
+
+// We may or may not have this data based on whether the user is logged in.
+//
+// If we have a $user id here, it means we know the user is logged into
+// Facebook, but we don't know if the access token is valid. An access
+// token is invalid if the user logged out of Facebook.
+
+if ($user) {
+  try {
+    // Proceed knowing you have a logged in user who's authenticated.
+    $user_profile = $facebook->api('/me');
+  } catch (FacebookApiException $e) {
+    error_log($e);
+    $user = null;
+  }
 }
+
+// Login or logout url will be needed depending on current user state.
+if ($user) {
+  $logoutUrl = $facebook->getLogoutUrl();
+} else {
+  $loginUrl = $facebook->getLoginUrl();
+}
+
+// This call will always work since we are fetching public data.
+$naitik = $facebook->api('/naitik');
+
 ?>
+<!doctype html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <title>php-sdk</title>
+    <style>
+      body {
+        font-family: 'Lucida Grande', Verdana, Arial, sans-serif;
+      }
+      h1 a {
+        text-decoration: none;
+        color: #3b5998;
+      }
+      h1 a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>php-sdk</h1>
+
+    <?php if ($user): ?>
+      <a href="<?php echo $logoutUrl; ?>">Logout</a>
+    <?php else: ?>
+      <div>
+        Login using OAuth 2.0 handled by the PHP SDK:
+        <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
+      </div>
+    <?php endif ?>
+
+    <h3>PHP Session</h3>
+    <pre><?php print_r($_SESSION); ?></pre>
+
+    <?php if ($user): ?>
+      <h3>You</h3>
+      <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
+
+      <h3>Your User Object (/me)</h3>
+      <pre><?php print_r($user_profile); ?></pre>
+    <?php else: ?>
+      <strong><em>You are not Connected.</em></strong>
+    <?php endif ?>
+
+    <h3>Public profile of Naitik</h3>
+    <img src="https://graph.facebook.com/naitik/picture">
+    <?php echo $naitik['name']; ?>
+  </body>
+</html>
