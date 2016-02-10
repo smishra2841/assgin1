@@ -1,72 +1,122 @@
 <?php include 'calander2.php' ?>
 <?php
-session_start();
-require_once ('autoload.php');
-
-$fb = new Facebook\Facebook([
-  'app_id' => '763789147084760',
-  'app_secret' => '7199d3ede5818b5e50c16eef50f027bf',
-  'default_graph_version' => 'v2.5',
-  ]);
-$helper = $fb->getRedirectLoginHelper();
-$permissions = ['email']; // optional
-	
-try {
-	if (isset($_SESSION['facebook_access_token'])) {
-		$accessToken = $_SESSION['facebook_access_token'];
-	} else {
-  		$accessToken = $helper->getAccessToken();
-	}
-} catch(Facebook\Exceptions\FacebookResponseException $e) {
- 	// When Graph returns an error
- 	echo 'Graph returned an error: ' . $e->getMessage();
-  	exit;
-} catch(Facebook\Exceptions\FacebookSDKException $e) {
- 	// When validation fails or other local issues
-	echo 'Facebook SDK returned an error: ' . $e->getMessage();
-  	exit;
- }
-if (isset($accessToken)) {
-	if (isset($_SESSION['facebook_access_token'])) {
-		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-	} else {
-		// getting short-lived access token
-		$_SESSION['facebook_access_token'] = (string) $accessToken;
-	  	// OAuth 2.0 client handler
-		$oAuth2Client = $fb->getOAuth2Client();
-		// Exchanges a short-lived access token for a long-lived one
-		$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
-		$_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
-		// setting default access token to be used in script
-		$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-	}
-	// redirect the user back to the same page if it has "code" GET variable
-	if (isset($_GET['code'])) {
-		header('Location: ./');
-	}
-	// getting basic info about user
-	try {
-		$profile_request = $fb->get('/me?fields=name,first_name,last_name,email');
-		$profile = $profile_request->getGraphNode()->asArray();
-	} catch(Facebook\Exceptions\FacebookResponseException $e) {
-		// When Graph returns an error
-		echo 'Graph returned an error: ' . $e->getMessage();
-		session_destroy();
-		// redirecting user back to app login page
-		header("Location: ./");
-		exit;
-	} catch(Facebook\Exceptions\FacebookSDKException $e) {
-		// When validation fails or other local issues
-		echo 'Facebook SDK returned an error: ' . $e->getMessage();
-		exit;
-	}
-	
-	// printing $profile array on the screen which holds the basic info about user
-	print_r($profile);
-  	// Now you can redirect to another page and use the access token from $_SESSION['facebook_access_token']
-} else {
-	// replace your website URL same as added in the developers.facebook.com/apps e.g. if you used http instead of https and you used non-www version or www version of your website then you must add the same here
-	$loginUrl = $helper->getLoginUrl('https://sohaibilyas.com/fbapp/', $permissions);
-	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
-}
+   ob_start();
+   session_start();
 ?>
+
+<?
+   // error_reporting(E_ALL);
+   // ini_set("display_errors", 1);
+?>
+
+<html lang = "en">
+   
+   <head>
+      <title>Tutorialspoint.com</title>
+      <link href = "css/bootstrap.min.css" rel = "stylesheet">
+      
+      <style>
+         body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #ADABAB;
+         }
+         
+         .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+            color: #017572;
+         }
+         
+         .form-signin .form-signin-heading,
+         .form-signin .checkbox {
+            margin-bottom: 10px;
+         }
+         
+         .form-signin .checkbox {
+            font-weight: normal;
+         }
+         
+         .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+         }
+         
+         .form-signin .form-control:focus {
+            z-index: 2;
+         }
+         
+         .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-color:#017572;
+         }
+         
+         .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-color:#017572;
+         }
+         
+         h2{
+            text-align: center;
+            color: #017572;
+         }
+      </style>
+      
+   </head>
+	
+   <body>
+      
+      <h2>Enter Username and Password</h2> 
+      <div class = "container form-signin">
+         
+         <?php
+            $msg = '';
+            
+            if (isset($_POST['login']) && !empty($_POST['username']) 
+               && !empty($_POST['password'])) {
+				
+               if ($_POST['username'] == 'tutorialspoint' && 
+                  $_POST['password'] == '1234') {
+                  $_SESSION['valid'] = true;
+                  $_SESSION['timeout'] = time();
+                  $_SESSION['username'] = 'tutorialspoint';
+                  
+                  echo 'You have entered valid use name and password';
+               }else {
+                  $msg = 'Wrong username or password';
+               }
+            }
+         ?>
+      </div> <!-- /container -->
+      
+      <div class = "container">
+      
+         <form class = "form-signin" role = "form" 
+            action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
+            ?>" method = "post">
+            <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
+            <input type = "text" class = "form-control" 
+               name = "username" placeholder = "username = tutorialspoint" 
+               required autofocus></br>
+            <input type = "password" class = "form-control"
+               name = "password" placeholder = "password = 1234" required>
+            <button class = "btn btn-lg btn-primary btn-block" type = "submit" 
+               name = "login">Login</button>
+         </form>
+			
+         Click here to clean <a href = "logout.php" tite = "Logout">Session.
+         
+      </div> 
+      
+   </body>
+</html>
