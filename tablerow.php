@@ -2,7 +2,7 @@
 
 
 <?php
-	echo "process to craete the row has started";
+
 	 	echo "<tr>";
 	
 		$first_day = mktime(0,0,0,$month, 1, $year) ;
@@ -35,6 +35,7 @@
 		$day_num = 1;
 		while ( $day_num <= $total_days )   
 		{  
+			echo "printing the row";
 			$todaysDate = date("n/j/Y");
 			$dateToCompare = $month. '/' . $day_num. '/' . $year;
 			echo "<td align='center' ";
