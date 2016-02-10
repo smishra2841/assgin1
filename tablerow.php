@@ -63,16 +63,15 @@
 			}
 			echo "> <a href='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&v=true'>".$day_num."</a>";
 			$sql = "SELECT * FROM event WHERE eventDate='".$dateToCompare."'";
-				$stmt =mysqli_prepare($conn, $sql);
-				mysqli_stmt_execute($stmt);
-				mysqli_stmt_store_result($stmt);
-
-				$nEvent =  mysqli_stmt_num_rows($stmt);
+			$stmt =mysqli_prepare($conn, $sql);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
+			$nEvent =  mysqli_stmt_num_rows($stmt);
 			if($nEvent >0)
 				{
-					echo "</br><form method='post'><input type='submit' name='event' value='Detail' width ='10px' formmethod='post' formaction='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&c=true'> </form>";
+					echo "<br/><form method='post'><input type='submit' name='event' value='Detail' width ='10px' formmethod='post' formaction='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&c=true'> </form>";
 				}
-			else {echo "</br>";}
+			else {echo "<br/>";}
 			echo " </td>";
 			$day_num++;   
 			$day_count++;    
