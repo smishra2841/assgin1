@@ -28,7 +28,7 @@
 		$day_count = 1; 
 		while ( $blank > 0 )   { 
 		 	echo "<tr>";
-	echo "printing the blank row";  
+	 
 			echo "<td class= 'a'></td>";   
 			$blank = $blank-1;   
 			$day_count++;  
@@ -40,9 +40,6 @@
 			$todaysDate = date("n/j/Y");
 			$dateToCompare = $month. '/' . $day_num. '/' . $year;
 			echo "<td align='center' ";
- 			
-			//this is where i am comparing two dates but it is giving error
-			//every day of the current month is turnin green
 			if ($todaysDate == $dateToCompare)
 			{
 				echo "class ='a today'";
