@@ -1,5 +1,5 @@
 <html>
-<?php include 'dbconnect.php' ?>
+<? php include 'dbconnect.php' ?>
 
 <head>Event Calander</head>
 <body>
@@ -43,9 +43,9 @@
 </style>
 
 
-<?php include 'tableheader.php' ?>
-<?php include 'addingData.php' ?>
-<?php include 'dbconnect.php' ?>
+<? php include 'tableheader.php' ?>
+<? php include 'addingData.php' ?>
+<? php include 'dbconnect.php' ?>
 
 
 <table class= 't1' border='1' >
@@ -65,12 +65,12 @@
 	<td class= 'a'>Friday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	<td class= 'a'>Saturday&nbsp;&nbsp;&nbsp;&nbsp;</td>
 </tr>
-	<?php include 'tablerow.php' ?>
+	<? php include 'tablerow.php' ?>
 
 </table>
 
 
-<?php include 'schedule.php' ?>
-<?php include 'bttnDetail.php' ?>
+<? php include 'schedule.php' ?>
+<? php include 'bttnDetail.php' ?>
 </body>
 </html>
