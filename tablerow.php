@@ -9,10 +9,10 @@ error_reporting(E_ALL);
 	 	echo "<tr>";
 
 		$first_day = mktime(0,0,0,$month, 1, $year) ;
-		echo "$first_day";
+		
 		$name_of_day = date('w', $first_day) ; //get the day of the weeek
 		//caluting blank days for the month for diaplay 
-		echo "<br/>$name_of_day";
+		
 		switch($name_of_day){   
 			case "0": $blank = 0; 
 			break;   
@@ -32,7 +32,7 @@ error_reporting(E_ALL);
 
 		$total_days = date('t', mktime(0, 0, 0, $month, 1, $year));  
 		$day_count = 1; 
-		echo "printing dates2";
+		
 		while ( $blank > 0 )   { 
 		echo "printing dates3";  
 			echo "<td class= 'a'></td>";   
@@ -88,7 +88,7 @@ error_reporting(E_ALL);
 			if ($day_count > 7)  
 			{  
 				echo "</tr><tr>";
-				echo "completed printing dates";  
+				 
 				$day_count = 1;  
 			}  
 			
