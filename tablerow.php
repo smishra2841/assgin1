@@ -3,8 +3,7 @@
 
 <?php
 
-	 	echo "<tr>";
-	echo "printing the row";
+	
 		$first_day = mktime(0,0,0,$month, 1, $year) ;
 		$name_of_day = date('w', $first_day) ; //get the day of the weeek
 		//caluting blank days for the month for diaplay 
@@ -27,7 +26,9 @@
 
 		$total_days = cal_days_in_month(0, $month, $year) ;  
 		$day_count = 1; 
-		while ( $blank > 0 )   {   
+		while ( $blank > 0 )   { 
+		 	echo "<tr>";
+	echo "printing the blank row";  
 			echo "<td class= 'a'></td>";   
 			$blank = $blank-1;   
 			$day_count++;  
@@ -35,7 +36,7 @@
 		$day_num = 1;
 		while ( $day_num <= $total_days )   
 		{  
-			
+
 			$todaysDate = date("n/j/Y");
 			$dateToCompare = $month. '/' . $day_num. '/' . $year;
 			echo "<td align='center' ";
