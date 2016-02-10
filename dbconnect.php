@@ -1,15 +1,13 @@
+
+
+
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "1234sm";
-$dbname = "eventCalendar";
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-// Create connection
-$conn = new mysqli($servername, $username, $password,$dbname);
+$server = $url["us-cdbr-iron-east-03.cleardb.net"];
+$username = $url["bb54b7a6852acd"];
+$password = $url["e4849472"];
+$db = substr($url["heroku_cf76f2266f6f3d1"], 1);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
+$conn = new mysqli($server, $username, $password, $db);
 ?>
