@@ -30,7 +30,7 @@ error_reporting(E_ALL);
 			break;   
 		}
 
-		$total_days = cal_days_in_month(CAL_GREGORIAN, $month, $year) ;  
+		$total_days = date('t', mktime(0, 0, 0, $month, 1, $year));  
 		$day_count = 1; 
 		echo "printing dates2";
 		while ( $blank > 0 )   { 
