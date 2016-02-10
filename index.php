@@ -1,7 +1,7 @@
 <?php include 'calander2.php' ?>
 <?php
 session_start();
-require_once('/src/Facebook/autoload.php');
+require_once("src/Facebook/autoload.php");
 
 $fb = new Facebook\Facebook([
   'app_id' => '763789147084760',
