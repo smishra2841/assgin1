@@ -3,7 +3,7 @@
 
 <?php
 	 	echo "<tr>";
-		echo "printing dates"; 
+
 		$first_day = mktime(0,0,0,$month, 1, $year) ;
 		$name_of_day = date('w', $first_day) ; //get the day of the weeek
 		//caluting blank days for the month for diaplay 
