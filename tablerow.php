@@ -26,7 +26,8 @@
 
 		$total_days = cal_days_in_month(0, $month, $year) ;  
 		$day_count = 1; 
-		while ( $blank > 0 )   {   
+		while ( $blank > 0 )   { 
+		echo "printing dates";  
 			echo "<td class= 'a'></td>";   
 			$blank = $blank-1;   
 			$day_count++;  
@@ -42,7 +43,7 @@
 			//every day of the current month is turnin green
 			if ($todaysDate == $dateToCompare)
 			{
-				echo "printing dates";
+				
 				echo "class ='a today'";
 
 			}  
