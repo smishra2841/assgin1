@@ -26,8 +26,9 @@
 
 		$total_days = cal_days_in_month(0, $month, $year) ;  
 		$day_count = 1; 
+		echo "printing dates2";
 		while ( $blank > 0 )   { 
-		echo "printing dates";  
+		echo "printing dates3";  
 			echo "<td class= 'a'></td>";   
 			$blank = $blank-1;   
 			$day_count++;  
