@@ -1,7 +1,7 @@
-<?php include 'calander2.php' ?>
+
 <?php
 session_start();
-require_once  '/src/Facebook/autoload.php';
+require  '/src/Facebook/autoload.php';
 $fb = new Facebook\Facebook([
   'app_id' => '763789147084760',
   'app_secret' => '7199d3ede5818b5e50c16eef50f027bf',
@@ -68,3 +68,7 @@ if (isset($accessToken)) {
 	$loginUrl = $helper->getLoginUrl('https://sohaibilyas.com/fbapp/', $permissions);
 	echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 }
+
+?>
+
+<?php include 'calander2.php' ?>
