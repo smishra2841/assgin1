@@ -1,6 +1,6 @@
 
 
-<form id ='eventdetail'name='eventform' method='POST' action="<?php $_SERVER['PHP_SELF']; ?> ?month=<?php echo $month;?>&day=<?php echo $day;?>&year=<?php echo $year; ?>&add=true">
+<form id ='eventdetail'name='eventform' method='POST' action="<?php $_SERVER['PHP_SELF']; ?> ?month=<?php echo $month;?>&day=<?php echo $day;?>&year=<?php echo $year; ?>&d=true&add=true">
 	<table width='400px' border='0'>
 		<tr>
 			<td width='150px'>Date</td>

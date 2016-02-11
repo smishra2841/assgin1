@@ -1,5 +1,5 @@
 <?php
-	if(isset($_GET['v']))
+	if(isset($_GET['d']))
 	 {
 	 	$userid = $_SESSION['userid'];
 		echo "<hr>";

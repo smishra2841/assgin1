@@ -64,7 +64,7 @@ $first_day_month = mktime(0,0,0,$month, 1, $year) ;
 				mysqli_stmt_close($stmt);
 				
 			}
-			echo "> <a href='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$week_counter_month."&year=".$year."&v=true'>".$week_counter_month."</a>";
+			echo "> <a href='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$week_counter_month."&year=".$year."&d=true'>".$week_counter_month."</a>";
 			$userid = $_SESSION['userid'];
 			$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$dateCompare."'";
 			$stmt =mysqli_prepare($conn, $sql);
