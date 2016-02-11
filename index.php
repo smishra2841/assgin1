@@ -74,7 +74,7 @@ session_start();
       <div class="modal-header">
         
           <h1 class="text-center">Login</h1>
-           <h4 ><?php echo $msg; ?></h4>
+           <h4 ><?php echo "<center>".$msg."</center>"; ?></h4>
       </div>
       <div class="modal-body">
           <form class="form col-md-12 center-block" method ="post">
