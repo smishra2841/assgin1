@@ -33,27 +33,7 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 			
 		}
 </script>
-<style>
-		.today{
-			background-color: #00ff00;
-		}
-		.event{
-			background-color: #FF8080;
-		}
-		a {
-     		text-decoration: none ;
-     		color:black;
-		  }
-		a:hover{
-    		color:red;
-    		text-decoration:none;
-    		cursor:pointer;
-   			}
-   		.t1 {width:25%;height:50%;}
-		.a  { width: 20px;height:65px;}
-</style>
-
-
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 <?php include 'tableheader.php' ?>
 <?php include 'addingData.php' ?>
 <?php include 'dbconnect.php' ?>
