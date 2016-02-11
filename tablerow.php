@@ -2,12 +2,8 @@
 
 
 <?php
-		ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 	 	echo "<tr>";
-
+		
 		$first_day = mktime(0,0,0,$month, 1, $year) ;
 		
 		$name_of_day = date('w', $first_day) ; //get the day of the weeek
@@ -32,9 +28,7 @@ error_reporting(E_ALL);
 
 		$total_days = date('t', mktime(0, 0, 0, $month, 1, $year));  
 		$day_count = 1; 
-		
-		while ( $blank > 0 )   { 
-		echo "printing dates3";  
+		while ( $blank > 0 )   {   
 			echo "<td class= 'a'></td>";   
 			$blank = $blank-1;   
 			$day_count++;  
@@ -50,13 +44,13 @@ error_reporting(E_ALL);
 			//every day of the current month is turnin green
 			if ($todaysDate == $dateToCompare)
 			{
-				
 				echo "class ='a today'";
 
 			}  
 			else
 			{
-				$sql = "SELECT * FROM event WHERE eventDate='".$dateToCompare."'";
+				$userid = $_SESSION['userid'];
+				$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$dateToCompare."'";
 				$stmt =mysqli_prepare($conn, $sql);
 				mysqli_stmt_execute($stmt);
 				mysqli_stmt_store_result($stmt);
@@ -71,24 +65,25 @@ error_reporting(E_ALL);
 				
 			}
 			echo "> <a href='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&v=true'>".$day_num."</a>";
-			$sql = "SELECT * FROM event WHERE eventDate='".$dateToCompare."'";
-			$stmt =mysqli_prepare($conn, $sql);
-			mysqli_stmt_execute($stmt);
-			mysqli_stmt_store_result($stmt);
-			$nEvent =  mysqli_stmt_num_rows($stmt);
+			$userid = $_SESSION['userid'];
+			$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$dateToCompare."'";
+				$stmt =mysqli_prepare($conn, $sql);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_store_result($stmt);
+
+				$nEvent =  mysqli_stmt_num_rows($stmt);
 			if($nEvent >0)
 				{
-					echo "<br/><form method='post'><input type='submit' name='event' value='Detail' width ='10px' formmethod='post' formaction='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&c=true'> </form>";
+					echo "</br><form method='post'><input type='submit' name='event' value='Detail' width ='10px' formmethod='post' formaction='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&c=true'> </form>";
 				}
-			else {echo "<br/>";}
+			else {echo "</br>";}
 			echo " </td>";
 			$day_num++;   
 			$day_count++;    
 			//Make sure we start a new row every week  
 			if ($day_count > 7)  
 			{  
-				echo "</tr><tr>";
-				 
+				echo "</tr><tr>";  
 				$day_count = 1;  
 			}  
 			
@@ -100,6 +95,8 @@ error_reporting(E_ALL);
 			}  
 
 
-		echo "</tr>";
+			echo "</tr>";
+
+
 
 ?>

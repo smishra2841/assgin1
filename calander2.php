@@ -1,8 +1,21 @@
-<html>
+<?php session_start(); 
+if($_SESSION['userid']=="" && $_SESSION['name']==""){
+	header("location: index.php");}
+?>
 <?php include 'dbconnect.php' ?>
+<html>
+
+
 
 <head>Event Calander</head>
+
 <body>
+
+
+<h4>
+
+<?php echo "Welcome " . $_SESSION["name"] . ".<br>"; ?>
+</h4>
 
 <script>
 		function goLastMonth(month, year){
@@ -72,5 +85,6 @@
 
 <?php include 'schedule.php' ?>
 <?php include 'bttnDetail.php' ?>
+ Click here to <a href = "logout.php" tite = "Logout"><u>logout</u>.
 </body>
 </html>

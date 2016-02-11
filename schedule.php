@@ -1,9 +1,10 @@
 <?php
 	if(isset($_GET['v']))
 	 {
+	 	$userid = $_SESSION['userid'];
 		echo "<hr>";
 		include("eventDetail.php");
-		$sql = "SELECT * FROM event WHERE eventDate='".$month."/".$day."/".$year."'";
+		$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$month."/".$day."/".$year."'";
 		$result = mysqli_query($conn, $sql);
 		
 		echo "<hr>";

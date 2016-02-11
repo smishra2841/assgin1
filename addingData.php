@@ -6,8 +6,8 @@
 		$detail =$_POST['txtdetail'];
 		$eventdate = $month."/".$day."/".$year;
 		$eventtime =$_POST['usr_time'];
-		
-		$sql = "INSERT into event(title,detail,eventDate,eventEnd,eventTime) values ('".$title."','".$detail."','".$eventdate."',now(),'".$eventtime."')";
+		$userid = $_SESSION['userid'];
+		$sql = "INSERT into event(title,detail,eventDate,eventEnd,eventTime,user_id) values ('".$title."','".$detail."','".$eventdate."',now(),'".$eventtime."','".$userid."')";
 		if ($conn->query($sql) === TRUE) {
 			echo "<br/>New record created successfully<br/>";
 			} else {

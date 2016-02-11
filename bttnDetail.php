@@ -3,8 +3,8 @@
 		if (isset($_POST['event'] ))
 	 {
 	 	
-
-		$sql = "SELECT * FROM event WHERE eventDate='".$month."/".$day."/".$year."'";
+		$userid = $_SESSION['userid'];
+		$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$month."/".$day."/".$year."'";
 		$result = mysqli_query($conn, $sql);
 		
 		echo "<p>";
