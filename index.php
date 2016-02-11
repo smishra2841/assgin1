@@ -56,13 +56,15 @@ session_start();
              header("Location:calander2.php");
 
              echo 'logedd in';
-          }
+           }
+          
 
-       }
+       
        else 
        {
          $msg = 'Wrong username or password';
       }
+    }
    }
    ?>
 <!--login modal-->
