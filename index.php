@@ -1,6 +1,4 @@
-// Saurabh Mishra 100462788
-//Assginment 1
-//login form
+
 
 <?php include 'dbconnect.php' ?>
 <?php
@@ -79,7 +77,7 @@ session_start();
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-        //login form
+        
           <h1 class="text-center">Login</h1>
            <h4 ><?php echo "<center>".$msg."</center>"; ?></h4>
       </div>

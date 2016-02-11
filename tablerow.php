@@ -1,6 +1,3 @@
-// Saurabh Mishra 100462788
-//Assginment 1
-
 
 <?php
 echo "<tr>";
@@ -103,7 +100,7 @@ echo "<tr>";
 			
 		}
 
-		
+
 		while ( $week_counter >1 && $week_counter <=7 )   
 		{   
 			echo "<td> </td>";   

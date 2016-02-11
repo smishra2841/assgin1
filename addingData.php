@@ -1,6 +1,4 @@
-// Saurabh Mishra 100462788
-//Assginment 1
-// adding data to database
+
 <?php
 if(isset($_GET['add'])&& !empty($_POST['title'])&& !empty($_POST['detail'])){
 	

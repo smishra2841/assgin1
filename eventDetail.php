@@ -1,6 +1,4 @@
-// Saurabh Mishra 100462788
-//Assginment 1
-//event detail form
+
 <form id ='eventdetail'name='eventform' method='POST' action="<?php $_SERVER['PHP_SELF']; ?> ?month=<?php echo $month;?>&day=<?php echo $day;?>&year=<?php echo $year; ?>&d=true&add=true">
 	<table width='400px' border='0'>
 		<tr>

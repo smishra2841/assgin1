@@ -1,5 +1,3 @@
-// Saurabh Mishra 100462788
-//Assginment 1
 
 <?php session_start(); 
 if($_SESSION['userid']=="" && $_SESSION['name']==""){
@@ -17,7 +15,7 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 
 			<?php echo "Welcome " . $_SESSION["name"] . ".<br>"; ?>
 		</center></font></h4>
-//script for the previuos and next moth and year
+
 <script>
 		function goLast(month, year){
 			if(month == 1) {
@@ -36,7 +34,7 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 			
 		}
 </script>
-//css file 
+
 <style>
 		.today{
 			background-color: #FFFF00;
@@ -63,7 +61,7 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 <?php include 'dbconnect.php' ?>
 
 <center>
-//creating table for the calendar
+
 <table class= 't1' border='1' >
 
 <tr>
