@@ -5,17 +5,15 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 <?php include 'dbconnect.php' ?>
 <html>
 
+<head><font size ="23"><center>Event Calander</center></font></head>
+
+	<body>
 
 
-<head>Event Calander</head>
+		<h4><font size ="6"><center>
 
-<body>
-
-
-<h4>
-
-<?php echo "Welcome " . $_SESSION["name"] . ".<br>"; ?>
-</h4>
+			<?php echo "Welcome " . $_SESSION["name"] . ".<br>"; ?>
+		</center></font></h4>
 
 <script>
 		function goLastMonth(month, year){
@@ -60,7 +58,7 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 <?php include 'addingData.php' ?>
 <?php include 'dbconnect.php' ?>
 
-
+<center>
 <table class= 't1' border='1' >
 
 <tr>
@@ -86,5 +84,7 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 <?php include 'schedule.php' ?>
 <?php include 'bttnDetail.php' ?>
  Click here to <a href = "logout.php" tite = "Logout"><u>logout</u>.
+ </a>
+ </center>
 </body>
 </html>
