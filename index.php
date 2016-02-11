@@ -62,7 +62,7 @@ session_start();
        
        else 
        {
-         $msg = 'Wrong username or password';
+         $msg = '*Wrong username or password';
       }
     }
    }
