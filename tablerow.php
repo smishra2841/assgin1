@@ -4,45 +4,45 @@
 <?php
 echo "<tr>";
 
-$first_day = mktime(0,0,0,$month, 1, $year) ;
+$first_day_month = mktime(0,0,0,$month, 1, $year) ;
 
-		$name_of_day = date('w', $first_day) ; //get the day of the weeek
-		//caluting blank days for the month for diaplay 
+		$name_of_day_month = date('w', $first_day_month) ; //get the day of the weeek
+		//caluting empty_day days for the month for diaplay 
 		
-		switch($name_of_day){   
-			case "0": $blank = 0; 
+		switch($name_of_day_month){   
+			case "0": $empty_day = 0; 
 			break;   
-			case "1": $blank = 1; 
+			case "1": $empty_day = 1; 
 			break;   
-			case "2": $blank = 2; 
+			case "2": $empty_day = 2; 
 			break;   
-			case "3": $blank = 3; 
+			case "3": $empty_day = 3; 
 			break;   
-			case "4": $blank = 4; 
+			case "4": $empty_day = 4; 
 			break;   
-			case "5": $blank = 5; 
+			case "5": $empty_day = 5; 
 			break;   
-			case "6": $blank = 6; 
+			case "6": $empty_day = 6; 
 			break;   
 		}
 
-		$total_days = date('t', mktime(0, 0, 0, $month, 1, $year));  
-		$day_count = 1; 
-		while ( $blank > 0 )   {   
+		$total_days_in_month = date('t', mktime(0, 0, 0, $month, 1, $year));  
+		$week_counter = 1; 
+		while ( $empty_day > 0 )   {   
 			echo "<td class= 'a'></td>";   
-			$blank = $blank-1;   
-			$day_count++;  
+			$empty_day = $empty_day-1;   
+			$week_counter++;  
 		}
-		$day_num = 1;
-		while ( $day_num <= $total_days )   
+		$week_counter_month = 1;
+		while ( $week_counter_month <= $total_days_in_month )   
 		{  
-			$todaysDate = date("n/j/Y");
-			$dateToCompare = $month. '/' . $day_num. '/' . $year;
+			$systemDate = date("n/j/Y");
+			$dateCompare = $month. '/' . $week_counter_month. '/' . $year;
 			echo "<td align='center' ";
 			
 			//this is where i am comparing two dates but it is giving error
 			//every day of the current month is turnin green
-			if ($todaysDate == $dateToCompare)
+			if ($systemDate == $dateCompare)
 			{
 				echo "class ='a today'";
 
@@ -50,7 +50,7 @@ $first_day = mktime(0,0,0,$month, 1, $year) ;
 			else
 			{
 				$userid = $_SESSION['userid'];
-				$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$dateToCompare."'";
+				$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$dateCompare."'";
 				$stmt =mysqli_prepare($conn, $sql);
 				mysqli_stmt_execute($stmt);
 				mysqli_stmt_store_result($stmt);
@@ -64,9 +64,9 @@ $first_day = mktime(0,0,0,$month, 1, $year) ;
 				mysqli_stmt_close($stmt);
 				
 			}
-			echo "> <a href='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&v=true'>".$day_num."</a>";
+			echo "> <a href='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$week_counter_month."&year=".$year."&v=true'>".$week_counter_month."</a>";
 			$userid = $_SESSION['userid'];
-			$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$dateToCompare."'";
+			$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$dateCompare."'";
 			$stmt =mysqli_prepare($conn, $sql);
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_store_result($stmt);
@@ -74,24 +74,24 @@ $first_day = mktime(0,0,0,$month, 1, $year) ;
 			$nEvent =  mysqli_stmt_num_rows($stmt);
 			if($nEvent >0)
 			{
-				echo "</br><form method='post'><input type='submit' name='event' value='Detail' width ='10px' formmethod='post' formaction='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&c=true'> </form>";
+				echo "</br><form method='post'><input type='submit' name='event' value='Detail' width ='10px' formmethod='post' formaction='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$week_counter_month."&year=".$year."&c=true'> </form>";
 			}
 			else {echo "</br>";}
 			echo " </td>";
-			$day_num++;   
-			$day_count++;    
+			$week_counter_month++;   
+			$week_counter++;    
 			//Make sure we start a new row every week  
-			if ($day_count > 7)  
+			if ($week_counter > 7)  
 			{  
 				echo "</tr><tr>";  
-				$day_count = 1;  
+				$week_counter = 1;  
 			}  
 			
 		}
-		while ( $day_count >1 && $day_count <=7 )   
+		while ( $week_counter >1 && $week_counter <=7 )   
 		{   
 			echo "<td> </td>";   
-			$day_count++;   
+			$week_counter++;   
 		}  
 
 
