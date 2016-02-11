@@ -2,10 +2,10 @@
 
 
 <?php
-	 	echo "<tr>";
-		
-		$first_day = mktime(0,0,0,$month, 1, $year) ;
-		
+echo "<tr>";
+
+$first_day = mktime(0,0,0,$month, 1, $year) ;
+
 		$name_of_day = date('w', $first_day) ; //get the day of the weeek
 		//caluting blank days for the month for diaplay 
 		
@@ -39,7 +39,7 @@
 			$todaysDate = date("n/j/Y");
 			$dateToCompare = $month. '/' . $day_num. '/' . $year;
 			echo "<td align='center' ";
- 			
+			
 			//this is where i am comparing two dates but it is giving error
 			//every day of the current month is turnin green
 			if ($todaysDate == $dateToCompare)
@@ -56,7 +56,7 @@
 				mysqli_stmt_store_result($stmt);
 
 				$noOfEvent =  mysqli_stmt_num_rows($stmt);
-				 printf("Result set has %d rows.\n", $noOfEvent );
+				printf("Result set has %d rows.\n", $noOfEvent );
 				if($noOfEvent >= 1)
 				{
 					echo "class='a event'";
@@ -67,15 +67,15 @@
 			echo "> <a href='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&v=true'>".$day_num."</a>";
 			$userid = $_SESSION['userid'];
 			$sql = "SELECT * FROM event WHERE user_id='$userid' AND eventDate='".$dateToCompare."'";
-				$stmt =mysqli_prepare($conn, $sql);
-				mysqli_stmt_execute($stmt);
-				mysqli_stmt_store_result($stmt);
+			$stmt =mysqli_prepare($conn, $sql);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
 
-				$nEvent =  mysqli_stmt_num_rows($stmt);
+			$nEvent =  mysqli_stmt_num_rows($stmt);
 			if($nEvent >0)
-				{
-					echo "</br><form method='post'><input type='submit' name='event' value='Detail' width ='10px' formmethod='post' formaction='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&c=true'> </form>";
-				}
+			{
+				echo "</br><form method='post'><input type='submit' name='event' value='Detail' width ='10px' formmethod='post' formaction='".$_SERVER['PHP_SELF']."?month=".$month."&day=".$day_num."&year=".$year."&c=true'> </form>";
+			}
 			else {echo "</br>";}
 			echo " </td>";
 			$day_num++;   
@@ -89,14 +89,14 @@
 			
 		}
 		while ( $day_count >1 && $day_count <=7 )   
-			{   
-				echo "<td> </td>";   
-				$day_count++;   
-			}  
+		{   
+			echo "<td> </td>";   
+			$day_count++;   
+		}  
 
 
-			echo "</tr>";
+		echo "</tr>";
 
 
 
-?>
+		?>
