@@ -35,10 +35,10 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 </script>
 <style>
 		.today{
-			background-color: #00ff00;
+			background-color: #FFFF00;
 		}
 		.event{
-			background-color: #FF8080;
+			background-color: #FF0000;
 		}
 		a {
      		text-decoration: none ;
