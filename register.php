@@ -1,3 +1,4 @@
+<?php include 'dbconnect.php' ?>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,6 +22,22 @@
 
 </head>
 <body>
+<?php
+if(isset($_POST['register'])&& !empty($_POST['fname'])&& !empty($_POST['username'])&& !empty($_POST['password'])){
+    
+    $fname =$_POST['fname'];
+    $username =$_POST['username'];
+    $password =$_POST['password']
+    
+    $sql = "INSERT into users(username,password,name) values ('"$username"','"$password"','"$fname "')";
+    if ($conn->query($sql) === TRUE) {
+        echo "<br/>New record created successfully<br/>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }$conn->close();
+
+}
+?>
 
 
 
