@@ -16,7 +16,7 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 		</center></font></h4>
 
 <script>
-		function goLastMonth(month, year){
+		function goLast(month, year){
 			if(month == 1) {
 				--year;
 				month = 13;
@@ -24,7 +24,7 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 			document.location.href ="<?php $_SERVER['PHP_SELF'];?>?month="+(month-1)+"&year="+year;
 			
 		}
-		function goNextMonth(month, year){
+		function goNext(month, year){
 			if(month == 12) {
 				++year;
 				month = 0;
@@ -64,15 +64,15 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 <tr>
 
 	<td  class= 'a' colspan='7' align="center">
-	<input  type='button' value='<'name='previousbutton' onclick ="goLastMonth(<?php echo $month.",".$year?>)">&nbsp;&nbsp;<?php echo $monthName.", ".$year; ?>&nbsp;&nbsp;<input type='button' value='>'name='nextbutton' onclick ="goNextMonth(<?php echo $month.",".$year?>)"></td>
+	<input  type='button' value='<'name='previousbttn' onclick ="goLast(<?php echo $month.",".$year?>)">&nbsp;&nbsp;<?php echo $monthName.", ".$year; ?>&nbsp;&nbsp;<input type='button' value='>'name='nextbutton' onclick ="goNext(<?php echo $month.",".$year?>)"></td>
 </tr>
 
 <tr>
 	<td class= 'a'>Sunday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	<td class= 'a'>Monday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	<td class= 'a'>Tuesday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	<td class= 'a'>wednesday&nbsp;&nbsp;&nbsp;</td>
-	<td class= 'a'>Thuesday&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'a'>Wednesday&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'a'>Thursday&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	<td class= 'a'>Friday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	<td class= 'a'>Saturday&nbsp;&nbsp;&nbsp;&nbsp;</td>
 </tr>
