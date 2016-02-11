@@ -72,7 +72,7 @@ session_start();
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        
           <h1 class="text-center">Login</h1>
            <h4 ><?php echo $msg; ?></h4>
       </div>
@@ -93,7 +93,7 @@ session_start();
       </div>
       <div class="modal-footer">
           <div class="col-md-12">
-            Click here to <a href = "logout.php" tite = "Logout"><u>logout</u>.
+            
       </div>  
       </div>
   </div>
