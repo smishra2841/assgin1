@@ -1,9 +1,11 @@
-
+// Saurabh Mishra 100462788
+//Assginment 1
+// adding data to database
 <?php
-if(isset($_GET['add'])&& !empty($_POST['txttitle'])&& !empty($_POST['txtdetail'])){
+if(isset($_GET['add'])&& !empty($_POST['title'])&& !empty($_POST['detail'])){
 	
-	$title =$_POST['txttitle'];
-	$detail =$_POST['txtdetail'];
+	$title =$_POST['title'];
+	$detail =$_POST['detail'];
 	$eventdate = $month."/".$day."/".$year;
 	$eventtime =$_POST['usr_time'];
 	$userid = $_SESSION['userid'];
@@ -15,7 +17,7 @@ if(isset($_GET['add'])&& !empty($_POST['txttitle'])&& !empty($_POST['txtdetail']
 	}$conn->close();
 
 }
-else if(isset($_GET['add'])&& empty($_POST['txttitle'])&& empty($_POST['txtdetail']) && isset($_POST['btnadd'] ))
+else if(isset($_GET['add'])&& empty($_POST['title'])&& empty($_POST['detail']) && isset($_POST['btnadd'] ))
 	{echo "<br/><center>Please enter Title and detail for the schedule<center><br/>";}
 
 ?>

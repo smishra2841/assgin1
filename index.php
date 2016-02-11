@@ -1,3 +1,7 @@
+// Saurabh Mishra 100462788
+//Assginment 1
+//login form
+
 <?php include 'dbconnect.php' ?>
 <?php
 ob_start();
@@ -21,6 +25,7 @@ session_start();
   </head>
   <body>
     <?php
+    //checking login and session
       ini_set('display_errors', 1);
       ini_set('display_startup_errors', 1);
       error_reporting(E_ALL);
@@ -49,6 +54,7 @@ session_start();
              $row = mysqli_fetch_assoc($query_run);
              $user_id =  $row['id'];
              $name=$row['name'];
+             //creating session
              $_SESSION['valid'] = true;
              $_SESSION['timeout'] = time();
              $_SESSION['userid'] = $user_id;
@@ -67,12 +73,13 @@ session_start();
     }
    }
    ?>
+
 <!--login modal-->
 <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-        
+        //login form
           <h1 class="text-center">Login</h1>
            <h4 ><?php echo "<center>".$msg."</center>"; ?></h4>
       </div>
