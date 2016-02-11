@@ -87,7 +87,7 @@ session_start();
             </div>
             <div class="form-group">
               <button class="btn btn-primary btn-lg btn-block" type = "submit" name = "login">Sign In</button>
-              <span class="pull-right"><a href="#">Register</a></span>
+              <span class="pull-right"><a href="register.php">Register</a></span>
             </div>
           </form>
       </div>
