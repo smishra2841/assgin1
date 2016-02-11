@@ -29,7 +29,7 @@ $first_day = mktime(0,0,0,$month, 1, $year) ;
 		$total_days = date('t', mktime(0, 0, 0, $month, 1, $year));  
 		$day_count = 1; 
 		while ( $blank > 0 )   {   
-			echo "<td class= 'a'></td>";   
+			echo "<td class= 'b'></td>";   
 			$blank = $blank-1;   
 			$day_count++;  
 		}
@@ -44,7 +44,7 @@ $first_day = mktime(0,0,0,$month, 1, $year) ;
 			//every day of the current month is turnin green
 			if ($todaysDate == $dateToCompare)
 			{
-				echo "class ='a today'";
+				echo "class ='b today'";
 
 			}  
 			else
@@ -59,7 +59,7 @@ $first_day = mktime(0,0,0,$month, 1, $year) ;
 				printf("Result set has %d rows.\n", $noOfEvent );
 				if($noOfEvent >= 1)
 				{
-					echo "class='a event'";
+					echo "class='b event'";
 				}
 				mysqli_stmt_close($stmt);
 				
@@ -90,7 +90,7 @@ $first_day = mktime(0,0,0,$month, 1, $year) ;
 		}
 		while ( $day_count >1 && $day_count <=7 )   
 		{   
-			echo "<td> </td>";   
+			echo "<td class= 'b'> </td>";   
 			$day_count++;   
 		}  
 

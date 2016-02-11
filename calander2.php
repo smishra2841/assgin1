@@ -43,18 +43,18 @@ if($_SESSION['userid']=="" && $_SESSION['name']==""){
 
 <tr>
 
-	<td  class= 'a' colspan='7' align="center">
+	<td  class= 'b' colspan='7' align="center">
 	<input  type='button' value='<'name='previousbutton' onclick ="goLastMonth(<?php echo $month.",".$year?>)">&nbsp;&nbsp;<?php echo $monthName.", ".$year; ?>&nbsp;&nbsp;<input type='button' value='>'name='nextbutton' onclick ="goNextMonth(<?php echo $month.",".$year?>)"></td>
 </tr>
 
 <tr>
-	<td class= 'a'>Sunday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	<td class= 'a'>Monday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	<td class= 'a'>Tuesday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	<td class= 'a'>wednesday&nbsp;&nbsp;&nbsp;</td>
-	<td class= 'a'>Thuesday&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	<td class= 'a'>Friday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-	<td class= 'a'>Saturday&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'b'>Sunday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'b'>Monday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'b'>Tuesday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'b'>Wednesday&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'b'>Thuesday&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'b'>Friday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td class= 'b'>Saturday&nbsp;&nbsp;&nbsp;&nbsp;</td>
 </tr>
 	<?php include 'tablerow.php' ?>
 
