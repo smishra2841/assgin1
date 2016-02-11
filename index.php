@@ -72,6 +72,7 @@ session_start();
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <h1 class="text-center">Login</h1>
+           <h4 ><?php echo $msg; ?></h4>
       </div>
       <div class="modal-body">
           <form class="form col-md-12 center-block" method ="post">
