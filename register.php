@@ -57,7 +57,23 @@
                                         </div>
                                      
                                       <button class="btn btn-success " type = "submit" name = "register">Register</button>
-              
+              <?php
+if(isset($_POST['register'])&& !empty($_POST['fname'])&& !empty($_POST['username'])&& !empty($_POST['password'])){
+    
+    $fname =$_POST['fname'];
+    $username =$_POST['username'];
+    $password =$_POST['password']
+    
+    $sql = "INSERT into users(username,password,name) values ('"$username"','"$password"','"$fname "')";
+    if ($conn->query($sql) === TRUE) {
+        echo "<br/>New record created successfully<br/>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }$conn->close();
+
+}
+?>
+
                                     <hr />
                                     Already Registered ?  <a href="index.php" >Login here</a>
                                     </form>
