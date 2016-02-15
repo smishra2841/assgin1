@@ -27,7 +27,7 @@ if(isset($_POST['register'])&& !empty($_POST['fname'])&& !empty($_POST['username
     
     $fname =$_POST['fname'];
     $username =$_POST['username'];
-    $password =$_POST['password']
+    $password =$_POST['password'];
     
     $sql = "INSERT into users(username,password,name) values ('".$username."','".$password."','".$fname. "')";
     if ($conn->query($sql) === TRUE) {
