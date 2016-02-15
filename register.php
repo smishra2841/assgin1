@@ -31,9 +31,9 @@ if(isset($_POST['register'])&& !empty($_POST['fname'])&& !empty($_POST['username
     
     $sql = "INSERT into users(username,password,name) values ('".$username."','".$password."','".$fname. "')";
     if ($conn->query($sql) === TRUE) {
-        echo "<br/>New record created successfully<br/>";
+        echo "<br/><center><b>New record created successfully</b></center><br/>";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<br/><center><b>Error: " . $sql . "<br>" . $conn->error."</b></center><br/>";
     }$conn->close();
 
 }
