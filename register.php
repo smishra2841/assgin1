@@ -45,7 +45,7 @@ if(isset($_POST['register'])&& !empty($_POST['fname'])&& !empty($_POST['username
     <div class="container">
         <div class="row text-center pad-top ">
             <div class="col-md-12">
-                <h2>Bootstrap Registration Page</h2>
+                <h2>Registration Page</h2>
             </div>
         </div>
          <div class="row  pad-top">
